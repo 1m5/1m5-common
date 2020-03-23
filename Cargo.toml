@@ -1,6 +1,6 @@
 [package]
 name = "onemfive_common"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["objectorange <objectorange@1m5.io>"]
 license-file = "LICENSE"
 edition = "2018"
@@ -18,6 +18,6 @@ keywords = ["1M5"]
 log = "0.4.8"
 simple_logger = "1.6.0"
 
-ra_common = "0.0.28"
+ra_common = "0.0.39"
 
 
