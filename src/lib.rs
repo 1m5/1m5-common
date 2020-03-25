@@ -3,26 +3,38 @@
 /// Maneuvering Condition
 #[derive(Debug)]
 pub enum ManCon {
-    Unknown     = 0,
-    None        = 1,
-    Low         = 2,
-    Medium      = 3,
-    High        = 4,
-    VeryHigh    = 5,
-    Extreme     = 6,
-    Neo         = 7
+    Unknown,
+    None,
+    Low,
+    Medium,
+    High,
+    VeryHigh,
+    Extreme,
+    Neo
 }
 
-impl From<u8> for ManCon {
-    fn from(num: u8) -> Self {
-        match num {
-            1 => ManCon::None,
-            2 => ManCon::Low,
-            3 => ManCon::Medium,
-            4 => ManCon::High,
-            5 => ManCon::VeryHigh,
-            6 => ManCon::Extreme,
-            7 => ManCon::Neo,
+impl ManCon {
+    pub fn string(&self) -> &str {
+        match *self {
+            ManCon::Unknown => "Unknown",
+            ManCon::None => "None",
+            ManCon::Low => "Low",
+            ManCon::Medium => "Medium",
+            ManCon::High => "High",
+            ManCon::VeryHigh => "VeryHigh",
+            ManCon::Extreme => "Extreme",
+            ManCon::Neo => "Neo"
+        }
+    }
+    pub fn from(mancon: &str) -> ManCon {
+        match mancon {
+            "None" => ManCon::None,
+            "Low" => ManCon::Low,
+            "Medium" => ManCon::Medium,
+            "High" => ManCon::High,
+            "VeryHigh" => ManCon::VeryHigh,
+            "Extreme" => ManCon::Extreme,
+            "Neo" => ManCon::Neo,
             _ => ManCon::Unknown
         }
     }
