@@ -1,41 +1,47 @@
 /// Common Module
+use std::convert::{TryFrom};
 
 /// Maneuvering Condition
 #[derive(Debug)]
 pub enum ManCon {
-    Unknown,
-    None,
-    Low,
-    Medium,
-    High,
-    VeryHigh,
-    Extreme,
-    Neo
+    Unknown   = 0,
+    None      = 1,
+    Low       = 2,
+    Medium    = 3,
+    High      = 4,
+    VeryHigh  = 5,
+    Extreme   = 6,
+    Neo       = 7,
 }
 
-impl ManCon {
-    pub fn string(&self) -> &str {
-        match *self {
-            ManCon::Unknown => "Unknown",
-            ManCon::None => "None",
-            ManCon::Low => "Low",
-            ManCon::Medium => "Medium",
-            ManCon::High => "High",
-            ManCon::VeryHigh => "VeryHigh",
-            ManCon::Extreme => "Extreme",
-            ManCon::Neo => "Neo"
+impl From<ManCon> for u8 {
+    fn from(original: ManCon) -> u8 {
+        match original {
+            ManCon::Unknown  => 0,
+            ManCon::None   => 1,
+            ManCon::Low   => 2,
+            ManCon::Medium => 3,
+            ManCon::High   => 4,
+            ManCon::VeryHigh => 5,
+            ManCon::Extreme => 6,
+            ManCon::Neo => 7,
         }
     }
-    pub fn from(mancon: &str) -> ManCon {
-        match mancon {
-            "None" => ManCon::None,
-            "Low" => ManCon::Low,
-            "Medium" => ManCon::Medium,
-            "High" => ManCon::High,
-            "VeryHigh" => ManCon::VeryHigh,
-            "Extreme" => ManCon::Extreme,
-            "Neo" => ManCon::Neo,
-            _ => ManCon::Unknown
+}
+
+impl TryFrom<u8> for ManCon {
+    type Error = ();
+    fn try_from(original: u8) -> Result<Self, Self::Error> {
+        match original {
+            0 => Ok(ManCon::Unknown),
+            1 => Ok(ManCon::None),
+            2 => Ok(ManCon::Low),
+            3 => Ok(ManCon::Medium),
+            4 => Ok(ManCon::High),
+            5 => Ok(ManCon::VeryHigh),
+            6 => Ok(ManCon::Extreme),
+            7 => Ok(ManCon::Neo),
+            _ => Err(())
         }
     }
 }
